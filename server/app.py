@@ -3,24 +3,9 @@ from pydantic import BaseModel, conlist
 from joblib import load
 import ast
 
-def return_pred(prediction):
+flower_type = {"Setosa": "images/setosa.jpg", "Versicolor" : "images/versicolor.jpg", "Virginica" : "images/virginica.jpg"}
 
-    prediction = prediction[0]
-
-    if prediction == "Setosa" : 
-
-        imgdisplay = "/images/setosa.jpg"
-
-    elif prediction == "Versicolor" : 
-
-        imgdisplay == "/images/versicolor.jpg"
-
-    else :
-
-        imgdisplay == "/images/verginica.jpg"
-
-    return imgdisplay
-
+# Charger le modèle
 model = load('iris_ML_v1.joblib')
 
 app = FastAPI(title="Iris ML API",
@@ -43,5 +28,9 @@ async def get_prediction(iris: Iris):
     data = ast.literal_eval(iris.json())
     values = [[data["sepal_length"], data["sepal_width"], data["petal_length"], data["petal_width"]]]
     prediction = model.predict(values).tolist()
+
+# !!! prediction[0] est très important sinon cela renvoie une clé-valeur et non la valeur
+    path = flower_type[prediction[0]]
     
-    return {"prediction": return_pred(prediction)}
+ # !!! prediction[0] est très important sinon cela renvoie une clé-valeur et non la valeur
+    return {"prediction": prediction[0], "image" : path}

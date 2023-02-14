@@ -18,9 +18,11 @@ st.write(petal_width, 'cm')
 
 inputs = {"sepal_length" : sepal_length, "sepal_width" : sepal_width, "petal_length" : petal_length, "petal_width" : petal_width}
 
-if st.button('Predict'):
+if st.button('Predict !'):
 
     res = requests.post(url = "http://server:8000/predict", data = json.dumps(inputs))
 
-    #st.subheader(f"Response from API =" + res.text)
-    st.image(res.txt, caption='Sunrise by the mountains')
+    output = res.json()
+    image = Image.open(output["image"])
+    st.write("The characteristics reported predict a " + output["prediction"] + " as you can see below")
+    st.image(image)
