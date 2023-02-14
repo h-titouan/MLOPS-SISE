@@ -17,8 +17,10 @@ If you want to try it, you have to :
 
 ### Setup 
 
+```
 $ cd 'path/to/repository/folder'
 $ docker compose up -- build
+```
 
 ### Run application and API
 
