@@ -27,4 +27,5 @@ $ docker compose up --build
 Once the previous steps have been completed, launch these links in a browser : 
 
 localhost:8501 for the Streamlit Application
+
 localhost:8000 for the API
