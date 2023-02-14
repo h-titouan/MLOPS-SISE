@@ -19,7 +19,7 @@ If you want to try it, you have to :
 
 ```
 $ cd 'path/to/repository/folder'
-$ docker compose up -- build
+$ docker compose up --build
 ```
 
 ### Run application and API
