@@ -10,7 +10,8 @@ It will return the class of the iris and display an image of which iris you pred
 
 ## How to use this repository
 
-### Mandatory
+### Required
+
 If you want to try it, you have to :
 
 * Get Docker Desktop and run it
